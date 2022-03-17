@@ -1,3 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,700&display=swap");
+* {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
 
+.container {
+  display: flex;
+  align-items: center;
+}
+.container h2 {
+  font-style: italic;
+  font-size: 2.5rem;
+}
+.container .row {
+  width: 50%;
+  margin-left: 5%;
+}
+.container .img-responsive {
+  width: 50%;
+}
+@media (max-width: 1020px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+  .container .img-responsive {
+    width: 95%;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
