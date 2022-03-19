@@ -8,7 +8,6 @@ header {
   border-bottom: 2px solid #d2d2d2;
   margin-top: 0.2rem;
 }
-
 header .grid-container {
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -18,18 +17,15 @@ header .grid-container {
   align-items: center;
   color: #636363;
 }
-
 header .logo {
   grid-row: 1/2;
   grid-column: 1/2;
   justify-content: center;
 }
-
 header span {
   grid-row: 1/2;
   grid-column: 2/3;
 }
-
 header span input {
   border: 1px solid #b6b6b6;
   padding: 5px 16px;
@@ -39,17 +35,15 @@ header span input {
   font-size: 0.9rem;
   outline: 0;
 }
-
 header span .search {
   margin-left: -2rem;
   position: relative;
   top: 0.35rem;
+  filter: opacity(70%);
 }
-
 header .block {
   padding: 1rem;
 }
-
 header .head-buttons {
   grid-row: 1/2;
   grid-column: 3/4;
@@ -59,7 +53,6 @@ header .head-buttons {
   width: 100%;
   font-size: 0.9rem;
 }
-
 header .row-buttons {
   grid-row: 2/3;
   grid-column: 1/4;
@@ -68,24 +61,19 @@ header .row-buttons {
   width: 70%;
   margin: 0.1rem 0;
 }
-
 header .general-icon {
   width: 20px;
 }
-
 header .head-icon {
   width: 16px;
 }
-
 header .seta {
   width: 8px;
 }
-
 header .block:hover {
   cursor: pointer;
   background-color: rgba(226, 223, 223, 0.3);
 }
-
 header .block:hover .seta {
   transform: rotate(180deg);
   transition: 0.5s;
@@ -95,33 +83,27 @@ header .block:hover .seta {
   display: flex;
   align-items: center;
 }
-
 .container h3 {
   color: #b85200;
   font-size: 1.5rem;
 }
-
 .container h2 {
   margin-top: 1rem;
   font-style: italic;
   font-size: 2.5rem;
 }
-
 .container p {
   width: 70%;
   font-size: 1rem;
   margin-top: 1.5rem;
 }
-
 .container .row {
   width: 50%;
   margin-left: 5%;
 }
-
 .container .img-responsive {
   width: 50%;
 }
-
 .container button {
   color: #636363;
   font-size: 1rem;
@@ -132,7 +114,6 @@ header .block:hover .seta {
   border-radius: 0.125rem;
   border: 0.0625rem solid #636363;
 }
-
 .container button:hover {
   cursor: pointer;
 }
@@ -143,7 +124,6 @@ header .block:hover .seta {
   justify-content: space-between;
   margin: 2rem auto;
 }
-
 .icons-bar .icons {
   display: flex;
   flex-direction: column;
@@ -207,7 +187,6 @@ header .block:hover .seta {
   .container .row button {
     margin-bottom: 2rem;
   }
-
   .container .img-responsive {
     width: 100%;
   }
@@ -233,6 +212,5 @@ header .block:hover .seta {
     width: 81%;
   }
 }
-/*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=style.css.map */
