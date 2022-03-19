@@ -233,6 +233,19 @@ header .block:hover .seta {
     width: 81%;
   }
 }
+@media (max-width: 765px) {
+  .icons-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-wrap: wrap;
+    height: 15rem;
+    justify-content: space-around;
+  }
+  .icons-bar .icons {
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+}
 /*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=style.css.map */
