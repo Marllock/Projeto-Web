@@ -275,6 +275,19 @@ header .block:hover .seta {
   .grid-container span .search {
     display: none;
   }
+
+  .icons-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-wrap: wrap;
+    height: 15rem;
+    justify-content: space-around;
+  }
+  .icons-bar .icons {
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
 }
+/*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=style.css.map */
