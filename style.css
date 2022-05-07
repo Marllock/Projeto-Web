@@ -288,3 +288,43 @@ header .block:hover .seta {
     margin-bottom: 2rem;
   }
 }
+.hidden {
+  display: none;
+}
+
+.api-block {
+  height: 100vh;
+}
+.api-block .search-bar {
+  height: 10%;
+}
+.api-block .search-bar form {
+  width: 50vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.api-block .search-bar input {
+  width: 80%;
+  padding: 0.6rem;
+  border-radius: 10px;
+}
+.api-block .search-bar button {
+  background-color: #0672cb;
+  color: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.api-block .search-bar button:active {
+  outline-color: #0672cb;
+}
+.api-block .api-content {
+  height: 90%;
+}
+
+/*# sourceMappingURL=style.css.map */
+
+/*# sourceMappingURL=style.css.map */
