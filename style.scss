@@ -315,8 +315,8 @@ header {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
-    
+  background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
+
   /* Modal Content/Box */
   .modal-container {
     background-color: #fefefe;
@@ -326,89 +326,166 @@ header {
     z-index: 100;
     display: flex;
     flex-direction: column;
-    
-    @media(max-width:1024px){
-      width: 60%
+
+    @media (max-width: 1024px) {
+      width: 60%;
     }
-    @media(max-width:768px){
-      width: 80%
+    @media (max-width: 768px) {
+      width: 80%;
     }
-    @media(max-width:450px){
-      width: 80%
+
+    @media (max-width: 450px) {
+      width: 80%;
     }
   }
 
-  .close{
+  .close {
     align-self: flex-end;
     width: 40px;
     cursor: pointer;
-
   }
 }
 
-.hidden{
+.hidden {
   display: none;
 }
-.login{
+.login {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .login-container {
+    // min-height:100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 32px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-title {
+    margin: 32px 0;
+    font-weight: bold;
+    color: #303030;
+  }
+
+  .login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-input {
+    height: 48px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 8px;
+    border: unset;
+    outline: none;
+  }
+
+  .login-input-border {
+    height: 1px;
+    width: 100%;
+    margin-bottom: 10%;
+    background-color: #cfcfcf;
+  }
+
+  .login-submit {
+    height: 48px;
+    width: 100%;
+    margin-bottom: 2rem;
+    outline: none;
+    background-color: #0672cb;
+    color: #fff;
+    border: unset;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 2rem;
+  }
 }
 
-.login-container{
-  // min-height:100%;
-  width: 100%;
-  box-sizing: border-box;
-  padding:32px;
-  border-radius:8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+.api-block {
+  height: 100vh;
 
-.login-title{
-  margin: 32px 0;
-  font-weight: bold;
-  color: #303030;
-}
+  .search-bar {
+    height: 10vh;
+    .search-container {
+      width: fit-content;
+      align-items: center;
+      margin: 40px auto;
 
-.login-form{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+      input {
+        width: 40vw;
+        padding: 0.7rem;
+        margin-right: 10px;
+        border-radius: 4px;
+        // border: unset;
+        outline-color: #0672cb;
+      }
 
-.login-input{
-  height: 48px;
-  width: 100%;
-  box-sizing: border-box;
-  padding-left: 8px;
-  border: unset;
-  outline: none;
-}
+      button {
+        padding: 0.7rem;
+        outline: none;
+        background-color: #0672cb;
+        color: #fff;
+        border: unset;
+        border-radius: 4px;
+        cursor: pointer;
+      }
 
-.login-input-border{
-  height: 1px;
-  width: 100%;
-  margin-bottom: 10%;
-  background-color:#cfcfcf
-}
+      .clear {
+        @media (max-width: 420px) {
+          display: none;
+        }
+      }
+    }
+  }
 
-.login-submit{
-  height: 48px;
-  width: 100%;
-  margin-bottom:2rem;
-  outline:none;
-  background-color: #0672cb;
-  color: #fff;
-  border: unset;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-top: 2rem;
+  .monster {
+    width: 90%;
+    margin: 0 auto;
+
+    h1 {
+      margin: 15px 0;
+      font-style: italic;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    p {
+      margin: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .ul-title {
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-top: 15px;
+    }
+
+    .ul-subtitle {
+      font-weight: bold;
+      margin-top: 15px;
+      margin-left: 1.3rem;
+      font-size: 0.9rem;
+    }
+    li {
+      margin: 1rem;
+    }
+  }
 }
 /*# sourceMappingURL=style.css.map */
