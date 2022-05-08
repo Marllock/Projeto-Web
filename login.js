@@ -5,6 +5,7 @@ const loginBt = document.querySelector('.login')
 const mainContainer = document.querySelector('.main')
 const modal = document.querySelector('.modal')
 const closeBt = document.querySelector('.close')
+const apiBLock = document.querySelector('.api-block')
 
 const errorHandler = () => {
   submitButton.classList.remove('loading')
@@ -26,7 +27,6 @@ loginBt.addEventListener('click', () => {
 })
 
 closeBt.addEventListener('click', () => {
-  console.log('f')
   modal.style.display = 'none'
 })
 
@@ -40,8 +40,6 @@ submitButton.addEventListener('click', event => {
     errorHandler()
     return
   }
-
-  // submitButton.textContent = "Loading...";
 
   fetch('https://reqres.in/api/login', {
     method: 'POST',
@@ -62,10 +60,27 @@ submitButton.addEventListener('click', event => {
     })
     .then(response => {
       localStorage.setItem('token', response.token)
-      console.log(localStorage.getItem('token'))
       successHandler()
+      
+
+    }).then(e => {
+      authenticate()
     })
     .catch(() => {
+      console.log('error')
       errorHandler()
     })
 })
+
+function authenticate() {
+  console.log(localStorage.getItem('token'))
+  if(localStorage.getItem('token') != null && localStorage.getItem('token') != undefined){
+    mainContainer.classList.add('hidden')
+    apiBLock.classList.remove('hidden')
+    modal.style.display = 'none'
+  }
+}
+
+window.onload = () => {
+  authenticate()
+}
