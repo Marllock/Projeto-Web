@@ -307,23 +307,37 @@ header {
 }
 
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
+  position: fixed;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s;
+  z-index: 1;
+
+  .modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+  }
 
   /* Modal Content/Box */
   .modal-container {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    height: 55vh;
+    // height: 55vh;
     width: 30%; /* Could be more or less, depending on screen size */
-    z-index: 100;
+    z-index: 15;
     display: flex;
     flex-direction: column;
 
@@ -338,12 +352,10 @@ header {
       width: 80%;
     }
   }
-
-  .close {
-    align-self: flex-end;
-    width: 40px;
-    cursor: pointer;
-  }
+}
+.modal-active {
+  visibility: visible;
+  opacity: 1;
 }
 
 .hidden {

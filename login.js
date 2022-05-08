@@ -4,6 +4,8 @@ const submitButton = document.querySelector('.login-submit')
 const loginBt = document.querySelector('.login')
 const mainContainer = document.querySelector('.main')
 const modal = document.querySelector('.modal')
+const modalBg = document.querySelector('.modal-bg')
+const modalContainer = document.querySelector('.modal-container')
 const closeBt = document.querySelector('.close')
 const apiBLock = document.querySelector('.api-block')
 
@@ -22,12 +24,30 @@ const successHandler = () => {
   submitButton.style.backgroundColor = 'green'
 }
 
+// loginBt.addEventListener('click', () => {
+//   modal.style.display = 'block'
+// })
+
+// closeBt.addEventListener('click', () => {
+//   modal.style.display = 'none'
+// })
+
 loginBt.addEventListener('click', () => {
-  modal.style.display = 'block'
+  console.log('f')
+
+  modal.classList.add('modal-active')
+  modalBg.classList.add('modal-active')
 })
 
-closeBt.addEventListener('click', () => {
-  modal.style.display = 'none'
+//trigger para desativar o modal
+modalBg.addEventListener('click', () => {
+  console.log('a')
+  modalBg.classList.remove('modal-active')
+  modal.classList.remove('modal-active')
+})
+
+modalContainer.addEventListener('click', () => {
+  console.log('m')
 })
 
 submitButton.addEventListener('click', event => {
@@ -61,9 +81,8 @@ submitButton.addEventListener('click', event => {
     .then(response => {
       localStorage.setItem('token', response.token)
       successHandler()
-      
-
-    }).then(e => {
+    })
+    .then(e => {
       authenticate()
     })
     .catch(() => {
@@ -73,8 +92,10 @@ submitButton.addEventListener('click', event => {
 })
 
 function authenticate() {
-  console.log(localStorage.getItem('token'))
-  if(localStorage.getItem('token') != null && localStorage.getItem('token') != undefined){
+  if (
+    localStorage.getItem('token') != null &&
+    localStorage.getItem('token') != undefined
+  ) {
     mainContainer.classList.add('hidden')
     apiBLock.classList.remove('hidden')
     modal.style.display = 'none'
