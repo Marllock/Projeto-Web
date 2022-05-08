@@ -288,3 +288,183 @@ header .block:hover .seta {
     margin-bottom: 2rem;
   }
 }
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Black w/ opacity */
+  /* Modal Content/Box */
+}
+.modal .modal-container {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  height: 55vh;
+  width: 30%;
+  /* Could be more or less, depending on screen size */
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 1024px) {
+  .modal .modal-container {
+    width: 60%;
+  }
+}
+@media (max-width: 768px) {
+  .modal .modal-container {
+    width: 80%;
+  }
+}
+@media (max-width: 450px) {
+  .modal .modal-container {
+    width: 80%;
+  }
+}
+.modal .close {
+  align-self: flex-end;
+  width: 40px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.login {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login .login-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 32px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login .login-title {
+  margin: 32px 0;
+  font-weight: bold;
+  color: #303030;
+}
+.login .login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login .login-input {
+  height: 48px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 8px;
+  border: unset;
+  outline: none;
+}
+.login .login-input-border {
+  height: 1px;
+  width: 100%;
+  margin-bottom: 10%;
+  background-color: #cfcfcf;
+}
+.login .login-submit {
+  height: 48px;
+  width: 100%;
+  margin-bottom: 2rem;
+  outline: none;
+  background-color: #0672cb;
+  color: #fff;
+  border: unset;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.api-block {
+  height: 100vh;
+}
+.api-block .search-bar {
+  height: 10vh;
+}
+.api-block .search-bar .search-container {
+  width: fit-content;
+  align-items: center;
+  margin: 40px auto;
+}
+.api-block .search-bar .search-container input {
+  width: 40vw;
+  padding: 0.7rem;
+  margin-right: 10px;
+  border-radius: 4px;
+  outline-color: #0672cb;
+}
+.api-block .search-bar .search-container button {
+  padding: 0.7rem;
+  outline: none;
+  background-color: #0672cb;
+  color: #fff;
+  border: unset;
+  border-radius: 4px;
+  cursor: pointer;
+}
+@media (max-width: 420px) {
+  .api-block .search-bar .search-container .clear {
+    display: none;
+  }
+}
+.api-block .monster {
+  width: 90%;
+  margin: 0 auto;
+}
+.api-block .monster h1 {
+  margin: 15px 0;
+  font-style: italic;
+}
+.api-block .monster .title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.api-block .monster p {
+  margin: 1rem;
+}
+.api-block .monster ul {
+  list-style: none;
+  padding: 0;
+}
+.api-block .monster .ul-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-top: 15px;
+}
+.api-block .monster .ul-subtitle {
+  font-weight: bold;
+  margin-top: 15px;
+  margin-left: 1.3rem;
+  font-size: 0.9rem;
+}
+.api-block .monster li {
+  margin: 1rem;
+}
+
+/*# sourceMappingURL=style.css.map */
+
+/*# sourceMappingURL=style.css.map */
