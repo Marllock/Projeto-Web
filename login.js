@@ -24,30 +24,16 @@ const successHandler = () => {
   submitButton.style.backgroundColor = 'green'
 }
 
-// loginBt.addEventListener('click', () => {
-//   modal.style.display = 'block'
-// })
-
-// closeBt.addEventListener('click', () => {
-//   modal.style.display = 'none'
-// })
-
+//trigger para ativar o modal
 loginBt.addEventListener('click', () => {
-  console.log('f')
-
   modal.classList.add('modal-active')
   modalBg.classList.add('modal-active')
 })
 
 //trigger para desativar o modal
 modalBg.addEventListener('click', () => {
-  console.log('a')
   modalBg.classList.remove('modal-active')
   modal.classList.remove('modal-active')
-})
-
-modalContainer.addEventListener('click', () => {
-  console.log('m')
 })
 
 submitButton.addEventListener('click', event => {
