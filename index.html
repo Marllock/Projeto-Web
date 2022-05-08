@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="main">
+    <div class="main hidden">
         <header>
             <div class="grid-container">
                 <section class="logo-container">
@@ -144,9 +144,10 @@
 
     <div class="api-block">
         <header class="search-bar">
-            <form action="" method="get" class="search-container">
-                <input type="text" placeholder="Digite o nome da criatura a ser buscada">
-                <button>BUSCAR</button>
+            <form class="search-container">
+                <input class="monster-input" type="text" placeholder="Digite o nome da criatura a ser buscada">
+                <button class="monster-button">SEARCH</button>
+                <button class="clear">CLEAN RESEARCH</button>
             </form>
         </header>
         <main class="api-content">
@@ -155,6 +156,7 @@
 
 
         <script src="login.js"></script>
+        <script src="api-consuming.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,700&display=swap");
 * {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 header {
@@ -349,8 +349,7 @@ header .block:hover .seta {
   justify-content: center;
   align-items: center;
 }
-
-.login-container {
+.login .login-container {
   width: 100%;
   box-sizing: border-box;
   padding: 32px;
@@ -359,22 +358,19 @@ header .block:hover .seta {
   flex-direction: column;
   align-items: center;
 }
-
-.login-title {
+.login .login-title {
   margin: 32px 0;
   font-weight: bold;
   color: #303030;
 }
-
-.login-form {
+.login .login-form {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-
-.login-input {
+.login .login-input {
   height: 48px;
   width: 100%;
   box-sizing: border-box;
@@ -382,15 +378,13 @@ header .block:hover .seta {
   border: unset;
   outline: none;
 }
-
-.login-input-border {
+.login .login-input-border {
   height: 1px;
   width: 100%;
   margin-bottom: 10%;
   background-color: #cfcfcf;
 }
-
-.login-submit {
+.login .login-submit {
   height: 48px;
   width: 100%;
   margin-bottom: 2rem;
@@ -403,6 +397,72 @@ header .block:hover .seta {
   font-size: 1rem;
   font-weight: bold;
   margin-top: 2rem;
+}
+
+.api-block {
+  height: 100vh;
+}
+.api-block .search-bar {
+  height: 10vh;
+}
+.api-block .search-bar .search-container {
+  width: fit-content;
+  align-items: center;
+  margin: 40px auto;
+}
+.api-block .search-bar .search-container input {
+  width: 40vw;
+  padding: 0.7rem;
+  margin-right: 10px;
+  border-radius: 4px;
+  outline-color: #0672cb;
+}
+.api-block .search-bar .search-container button {
+  padding: 0.7rem;
+  outline: none;
+  background-color: #0672cb;
+  color: #fff;
+  border: unset;
+  border-radius: 4px;
+  cursor: pointer;
+}
+@media (max-width: 420px) {
+  .api-block .search-bar .search-container .clear {
+    display: none;
+  }
+}
+.api-block .monster {
+  width: 90%;
+  margin: 0 auto;
+}
+.api-block .monster h1 {
+  margin: 15px 0;
+  font-style: italic;
+}
+.api-block .monster .title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.api-block .monster p {
+  margin: 1rem;
+}
+.api-block .monster ul {
+  list-style: none;
+  padding: 0;
+}
+.api-block .monster .ul-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-top: 15px;
+}
+.api-block .monster .ul-subtitle {
+  font-weight: bold;
+  margin-top: 15px;
+  margin-left: 1.3rem;
+  font-size: 0.9rem;
+}
+.api-block .monster li {
+  margin: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */
