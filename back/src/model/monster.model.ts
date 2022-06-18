@@ -8,8 +8,8 @@ const monsterSchema = new Schema({
   elements: [String],
   ailments: [{ type: SchemaTypes.ObjectId, ref: 'Ailment' }],
   locations: [{ type: SchemaTypes.ObjectId, ref: 'Location' }],
-  resistances: [{ type: String }],
-  weakness: [{ type: String }]
+  resistances: [ String ],
+  weakness: [String]
 })
 
 export const monsterModel = model('Monster', monsterSchema)
