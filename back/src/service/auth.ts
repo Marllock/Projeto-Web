@@ -1,13 +1,7 @@
-const dotenv = require('dotenv')
-import {Request, Response, NextFunction} from 'express'
+import {Request, Response} from 'express'
 import {verify, sign} from 'jsonwebtoken'
 
-// get config vars
-dotenv.config()
-
-console.log(process.env.TOKEN_SECRET);
-
-export function ensureAuthenticated(request: Request, response: Response, next: NextFunction) {
+export function ensureAuthenticated(request: Request, response: Response) {
     const authToken = request.headers.authorization;
 
     if(!authToken) {
