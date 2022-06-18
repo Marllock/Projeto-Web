@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import express, { Request, Response, NextFunction } from 'express'
 import userRouter from './routes/user.router'
+import monsterRouter from './routes/monster.router'
 // import cors from 'cors'
 
 async function main() {
@@ -24,6 +25,7 @@ app.use(
 )
 
 app.use('/users', userRouter)
+app.use('/monsters', monsterRouter)
 
 app.listen('8080', () => {
   console.log('http://localhost:8080')
