@@ -1,4 +1,4 @@
-import { userModel } from '../model/userModel'
+import { userModel } from '../model/user.model'
 import { Request, Response } from 'express'
 import { generateAccessToken } from '../service/auth'
 import { hash, compare } from 'bcrypt'
