@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import express, { Request, Response, NextFunction } from 'express'
-import userRouter from './routes/userRouter'
+import userRouter from './routes/user.router'
+// import cors from 'cors'
 
 async function main() {
   await mongoose.connect(
@@ -11,6 +12,7 @@ async function main() {
 const app = express()
 
 app.use(express.json())
+// app.use(cors.)
 
 app.use(
   (error: Error, request: Request, response: Response, next: NextFunction) => {
