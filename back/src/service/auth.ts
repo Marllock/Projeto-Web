@@ -1,7 +1,7 @@
-import {Request, Response} from 'express'
+import {Request, Response, NextFunction} from 'express'
 import {verify, sign} from 'jsonwebtoken'
 
-export function ensureAuthenticated(request: Request, response: Response) {
+export function ensureAuthenticated(request: Request, response: Response, next: NextFunction) {
     const authToken = request.headers.authorization;
 
     if(!authToken) {
@@ -19,6 +19,8 @@ export function ensureAuthenticated(request: Request, response: Response) {
             message: "invalid token"
         })
     }
+
+    next();
 }
 
 export function generateAccessToken(username: string) {
