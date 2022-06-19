@@ -1,56 +1,53 @@
-import { userModel } from '../model/user.model'
-import { Request, Response } from 'express'
-import { generateAccessToken } from '../service/auth'
-import { hash, compare } from 'bcrypt'
+import { userModel } from "../model/user.model";
+import { Request, Response } from "express";
+import { generateAccessToken } from "../service/auth";
+import { hashSync, compare } from "bcrypt";
 
 export function register(req: Request, res: Response) {
   //check unicity of username
   try {
-    userModel.findOne(req.body.username).exec()
+    userModel.findOne({ name: req.body.name }).exec();
   } catch (err) {
     res.status(409).json({
-      message: 'Nome já utilizado'
-    })
+      message: "Nome já utilizado",
+    });
   }
   //check unicity of username
   try {
-    userModel.findOne(req.body.email).exec()
+    userModel.findOne({ email: req.body.email }).exec();
   } catch (err) {
     res.status(409).json({
-      message: 'email já utilizado'
-    })
+      message: "email já utilizado",
+    });
   }
 
-  const encryptedPassword = hash(req.body.username, 10)
+  const encryptedPassword = hashSync(req.body.name, 10);
 
-  userModel
-    .create({
-      username: req.body.username,
-      email: req.body.email,
-      password: encryptedPassword
-    })
-    .then(_ => {
-      res.status(201).json({
-        message: 'Registro efetuado com sucesso'
-      })
-    })
+  userModel.create({
+    name: req.body.username,
+    email: req.body.email,
+    password: encryptedPassword,
+  });
+  res.status(201).json({
+    message: "Registro efetuado com sucesso",
+  });
 }
 
 export async function login(req: Request, res: Response) {
   try {
-    const user = await userModel.findOne(req.body.username).exec()
-    const comparePassword = compare(req.body.password, user.password)
+    const user = await userModel.findOne(req.body.username).exec();
+    const comparePassword = await compare(req.body.password, user.password);
 
     if (!comparePassword) {
-      throw new Error()
+      throw new Error();
     }
   } catch (err) {
     res.status(401).json({
-      message: 'Usuário ou senha inválidos'
-    })
+      message: "Usuário ou senha inválidos",
+    });
   }
 
   res.status(200).json({
-    token: generateAccessToken(req.body.username)
-  })
+    token: generateAccessToken(req.body.username),
+  });
 }
