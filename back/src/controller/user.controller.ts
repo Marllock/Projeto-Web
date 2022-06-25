@@ -1,53 +1,54 @@
-import { userModel } from "../model/user.model";
-import { Request, Response } from "express";
-import { generateAccessToken } from "../service/auth";
-import { hashSync, compare } from "bcrypt";
+import { userModel } from '../model/user.model'
+import { Request, Response } from 'express'
+import { generateAccessToken } from '../service/auth'
+import { hashSync, compare, compareSync } from 'bcrypt'
 
-export function register(req: Request, res: Response) {
+export async function register(req: Request, res: Response) {
   //check unicity of username
-  try {
-    userModel.findOne({ name: req.body.name }).exec();
-  } catch (err) {
-    res.status(409).json({
-      message: "Nome já utilizado",
-    });
-  }
-  //check unicity of username
-  try {
-    userModel.findOne({ email: req.body.email }).exec();
-  } catch (err) {
-    res.status(409).json({
-      message: "email já utilizado",
-    });
-  }
+  // userModel.findOne({ username: req.body.name }).catch(_ => {
+  //   res.status(409).json({ message: 'Username already active' })
+  // })
 
-  const encryptedPassword = hashSync(req.body.name, 10);
+  // //check unicity of username
+  // await userModel.findOne({ email: req.body.email }).catch(_ => {
+  //   res.status(409).json({ message: 'Email already active' })
+  // })
 
-  userModel.create({
-    name: req.body.username,
-    email: req.body.email,
-    password: encryptedPassword,
-  });
-  res.status(201).json({
-    message: "Registro efetuado com sucesso",
-  });
+  const encryptedPassword = hashSync(req.body.password, 10)
+
+  await userModel
+    .create({
+      username: req.body.name,
+      email: req.body.email,
+      password: encryptedPassword
+    })
+    .catch(async e => {
+      let message = ''
+      let status = 400
+      if (await userModel.findOne({ username: req.body.name })) {
+        message = 'Nome já utilizado'
+        status = 409
+      } else if (await userModel.findOne({ email: req.body.email })) {
+        message = 'Email já utilizado'
+        status = 409
+      }
+      res.status(status).json({ message: message })
+    })
 }
 
 export async function login(req: Request, res: Response) {
-  try {
-    const user = await userModel.findOne(req.body.username).exec();
-    const comparePassword = await compare(req.body.password, user.password);
+  const user = await userModel.findOne({ email: req.body.email }).catch(e => {
+    return res.status(400).json({ message: 'Usuário não encontrado' })
+  })
 
-    if (!comparePassword) {
-      throw new Error();
-    }
-  } catch (err) {
-    res.status(401).json({
-      message: "Usuário ou senha inválidos",
-    });
+  const comparePassword = compareSync(req.body.password, user.password)
+
+  if (!comparePassword) {
+    return res.status(401).json({
+      message: 'Usuário ou senha inválidos'
+    })
   }
-
   res.status(200).json({
-    token: generateAccessToken(req.body.username),
-  });
+    token: generateAccessToken(req.body.email)
+  })
 }

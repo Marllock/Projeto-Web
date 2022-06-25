@@ -1,13 +1,24 @@
-import express from "express";
-import { createPost, getAllPosts } from "../controller/post.controller";
+import express from 'express'
+import { createPost, getAllPosts, getPost } from '../controller/post.controller'
 import multer from 'multer'
-import { ensureAuthenticated } from "../service/auth";
+import { ensureAuthenticated } from '../service/auth'
+import path from 'path'
 
-const upload = multer();
+const uploadFolder = path.resolve(__dirname, '../upload')
+
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: uploadFolder
+  })
+})
 const router = express.Router()
 
-router.post('/', ensureAuthenticated, upload.single('post'), createPost);
+router.use('/', express.static(uploadFolder))
 
-router.get('/', ensureAuthenticated, getAllPosts);
+router.post('/', ensureAuthenticated, upload.single('post'), createPost)
 
-export default router;
+router.get('/', ensureAuthenticated, getAllPosts)
+
+router.get('/:postId', ensureAuthenticated, getPost)
+
+export default router
