@@ -1,9 +1,11 @@
 import { Schema, model, SchemaTypes } from 'mongoose'
 
 const postSchema = new Schema({
-    name: String,
-    content: {type: File},
-    user: {type: SchemaTypes.ObjectId, ref: 'User'}
+  title: { type: String, required: true },
+  path: String,
+  filename: String,
+  text: String,
+  user: { type: SchemaTypes.ObjectId, ref: 'User' }
 })
 
 export const postModel = model('Post', postSchema)
