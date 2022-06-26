@@ -5,7 +5,7 @@ export async function getSpecificMonster(req: Request, res: Response) {
   const searchName = req.query.search
 
   monsterModel
-    .find({
+    .findOne({
       name: new RegExp('.*' + searchName + '.*')
     })
     .then(e => {

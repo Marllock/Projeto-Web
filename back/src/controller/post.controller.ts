@@ -1,34 +1,28 @@
 import { postModel } from '../model/post.model'
 import { Request, Response } from 'express'
 
-export function createPost(req: Request, res: Response) {
+export async function createPost(req: Request, res: Response) {
   // req.file.
-  postModel.create({
-    name: req.query.name,
-    filename: req.file?.filename,
-    path: req.file?.path
-  })
-
-  res.status(201).json({
-    message: 'Post created successfuly'
-  })
-}
-
-export function getAllPosts(req: Request, res: Response) {
-  try {
-    const allPosts = postModel.find({ user: { username: req.query.name } })
-    res.status(200).json(allPosts)
-  } catch (err) {
-    res.status(204).json({
-      message: 'No posts found'
+  postModel
+    .create({
+      title: req.body.title,
+      path: 'http://localhost:8080/posts/' + req.file?.filename,
+      text: req.body.text
     })
-  }
+    .then(() => {
+      res.status(201).json({
+        message: 'Post created successfuly'
+      })
+    })
 }
 
 export function getPost(req: Request, res: Response) {
-  const post = postModel
-    .findOne({ id: req.params.postId })
-    .then(_ => {
+  console.log(__dirname, '../upload')
+  postModel
+    .findOne({
+      title: new RegExp('.*' + req.query.title + '.*')
+    })
+    .then(post => {
       res.json(post)
     })
     .catch(_ => res.status(204).json({ message: 'No post found' }))

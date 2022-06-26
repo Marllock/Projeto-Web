@@ -3,7 +3,6 @@ import { Schema, model, SchemaTypes } from 'mongoose'
 const postSchema = new Schema({
   title: { type: String, required: true },
   path: String,
-  filename: String,
   text: String,
   user: { type: SchemaTypes.ObjectId, ref: 'User' }
 })

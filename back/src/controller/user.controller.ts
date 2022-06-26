@@ -1,19 +1,9 @@
 import { userModel } from '../model/user.model'
 import { Request, Response } from 'express'
-import { generateAccessToken } from '../service/auth'
+import { decodeToken, generateAccessToken } from '../service/auth'
 import { hashSync, compare, compareSync } from 'bcrypt'
 
 export async function register(req: Request, res: Response) {
-  //check unicity of username
-  // userModel.findOne({ username: req.body.name }).catch(_ => {
-  //   res.status(409).json({ message: 'Username already active' })
-  // })
-
-  // //check unicity of username
-  // await userModel.findOne({ email: req.body.email }).catch(_ => {
-  //   res.status(409).json({ message: 'Email already active' })
-  // })
-
   const encryptedPassword = hashSync(req.body.password, 10)
 
   await userModel
@@ -21,6 +11,10 @@ export async function register(req: Request, res: Response) {
       username: req.body.name,
       email: req.body.email,
       password: encryptedPassword
+    })
+    .then(e => {
+      console.log(e)
+      res.json({ token: generateAccessToken(e.email) })
     })
     .catch(async e => {
       let message = ''
@@ -37,18 +31,24 @@ export async function register(req: Request, res: Response) {
 }
 
 export async function login(req: Request, res: Response) {
-  const user = await userModel.findOne({ email: req.body.email }).catch(e => {
-    return res.status(400).json({ message: 'Usuário não encontrado' })
-  })
+  await userModel
+    .findOne({ email: req.body.email })
+    .then(async user => {
+      const comparePassword = await compareSync(
+        req.body.password,
+        user.password
+      )
 
-  const comparePassword = compareSync(req.body.password, user.password)
-
-  if (!comparePassword) {
-    return res.status(401).json({
-      message: 'Usuário ou senha inválidos'
+      if (!comparePassword) {
+        return res.status(401).json({
+          message: 'Usuário ou senha inválidos'
+        })
+      }
+      res.status(200).json({
+        token: generateAccessToken(req.body.email)
+      })
     })
-  }
-  res.status(200).json({
-    token: generateAccessToken(req.body.email)
-  })
+    .catch(e => {
+      return res.status(400).json({ message: 'Usuário não encontrado' })
+    })
 }
