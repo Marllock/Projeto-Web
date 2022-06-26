@@ -14,7 +14,7 @@ export async function register(req: Request, res: Response) {
     })
     .then(e => {
       console.log(e)
-      res.json({ token: generateAccessToken(e.email) })
+      res.json({ token: generateAccessToken(e.id), id: e.id })
     })
     .catch(async e => {
       let message = ''
@@ -45,7 +45,8 @@ export async function login(req: Request, res: Response) {
         })
       }
       res.status(200).json({
-        token: generateAccessToken(req.body.email)
+        token: generateAccessToken(user.id),
+        id: user.id
       })
     })
     .catch(e => {

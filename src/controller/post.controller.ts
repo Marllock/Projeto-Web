@@ -7,7 +7,8 @@ export async function createPost(req: Request, res: Response) {
     .create({
       title: req.body.title,
       path: 'http://localhost:8080/posts/' + req.file?.filename,
-      text: req.body.text
+      text: req.body.text,
+      user: req.body.id
     })
     .then(() => {
       res.status(201).json({
@@ -20,7 +21,8 @@ export function getPost(req: Request, res: Response) {
   console.log(__dirname, '../upload')
   postModel
     .findOne({
-      title: new RegExp('.*' + req.query.title + '.*')
+      title: new RegExp('.*' + req.query.title + '.*'),
+      user: req.query.id
     })
     .then(post => {
       res.json(post)

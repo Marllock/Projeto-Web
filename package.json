@@ -1,11 +1,11 @@
 {
-  "type": "module",
   "name": "back",
   "version": "1.0.0",
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "start": "ts-node /src/app.ts",
+    "start": "node ./dist/app.js",
+    "postinstall": "tsc && mv -i -v upload dist/ && rm -v -rf src",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts"
   },

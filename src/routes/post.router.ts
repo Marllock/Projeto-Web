@@ -4,7 +4,7 @@ import multer from 'multer'
 import { ensureAuthenticated } from '../service/auth'
 import path from 'path'
 
-const uploadFolder = path.resolve(__dirname, '../upload')
+const uploadFolder = path.resolve(__dirname, '../../upload')
 
 const upload = multer({
   storage: multer.diskStorage({
