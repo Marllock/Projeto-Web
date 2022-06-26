@@ -1,5 +1,10 @@
 import { Request, Response, NextFunction } from 'express'
-import { verify, sign } from 'jsonwebtoken'
+import { verify, sign, decode } from 'jsonwebtoken'
+
+export function decodeToken(tokenEncoded: string) {
+  const [, token] = tokenEncoded.split(' ')
+  return decode(token)
+}
 
 export function ensureAuthenticated(
   request: Request,
@@ -26,7 +31,6 @@ export function ensureAuthenticated(
       message: 'invalid token'
     })
   }
-
   next()
 }
 
