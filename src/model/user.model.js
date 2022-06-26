@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userModel = void 0;
+const mongoose_1 = require("mongoose");
+const userSchema = new mongoose_1.Schema({
+    username: { required: true, type: String, unique: true },
+    email: { required: true, type: String, unique: true },
+    password: { type: String, required: true }
+});
+exports.userModel = (0, mongoose_1.model)('User', userSchema);
